@@ -3,21 +3,21 @@ import { useTheme } from "../context/ThemeContext";
 import { useInView } from "../hooks/useInView";
 
 const galleryItems = [
-  { image: "./src/assets/images/SJ 2.png", title: "Royal Collection", subtitle: "22K Gold Heritage", size: "col-span-2 row-span-2" },
-  { image: "./src/assets/images/SJS r1.png", title: "Engagement Rings", subtitle: "Diamond & Gem", size: "col-span-1 row-span-1" },
-  { image: "./src/assets/images/SJS e2.png", title: "Elegant Earrings", subtitle: "Handcrafted", size: "col-span-1 row-span-1" },
-  { image: "./src/assets/images/pink_sapphire.png", title: "Gemstone Collection", subtitle: "Ceylon's Finest", size: "col-span-1 row-span-2" },
-  { image: "./src/assets/images/SJ b1.png", title: "Bracelets & Bangles", subtitle: "Timeless Beauty", size: "col-span-1 row-span-1" },
-  { image: "./src/assets/images/SJS n2.png", title: "Necklaces", subtitle: "Signature Series", size: "col-span-2 row-span-1" },
+  { image: "/assets/images/SJ 2.png", title: "Royal Collection", subtitle: "22K Gold Heritage", size: "col-span-2 row-span-2" },
+  { image: "/assets/images/SJS r1.png", title: "Engagement Rings", subtitle: "Diamond & Gem", size: "col-span-1 row-span-1" },
+  { image: "/assets/images/SJS e2.png", title: "Elegant Earrings", subtitle: "Handcrafted", size: "col-span-1 row-span-1" },
+  { image: "/assets/images/pink_sapphire.png", title: "Gemstone Collection", subtitle: "Ceylon's Finest", size: "col-span-1 row-span-2" },
+  { image: "/assets/images/SJ b1.png", title: "Bracelets & Bangles", subtitle: "Timeless Beauty", size: "col-span-1 row-span-1" },
+  { image: "/assets/images/SJS n2.png", title: "Necklaces", subtitle: "Signature Series", size: "col-span-2 row-span-1" },
 ];
 
 const instagramPosts = [
-  { image: "./src/assets/images/SJ 2swirl.png", href: "https://www.instagram.com/p/DU2sc0bDbn4/?igsh=MTlpaWN1YnBiYmVsYg==", likes: "2,345", caption: "Stunning 22K gold swirl pendant and earring set." },
-  { image: "./src/assets/images/SJ e2.png", href: "https://www.instagram.com/p/DU2sc0bDbn4/?igsh=MTlpaWN1YnBiYmVsYg==", likes: "1,892", caption: "Elegant gold hoop earrings" },
-  { image: "./src/assets/images/SJ 2.png", href: "https://www.instagram.com/p/DU2sc0bDbn4/?igsh=MTlpaWN1YnBiYmVsYg==", likes: "3,127", caption: "22K Gold bangles - traditional craftsmanship" },
-  { image: "./src/assets/images/SJ e1.png", href: "https://www.instagram.com/p/DU2sc0bDbn4/?igsh=MTlpaWN1YnBiYmVsYg==", likes: "2,654", caption: "Diamond engagement ring" },
-  { image: "./src/assets/images/SJ n1.png", href: "https://www.instagram.com/p/DU2sc0bDbn4/?igsh=MTlpaWN1YnBiYmVsYg==", likes: "4,210", caption: "Bridal necklace collection" },
-  { image: "./src/assets/images/SJ r12.png", href: "https://www.instagram.com/p/DU2sc0bDbn4/?igsh=MTlpaWN1YnBiYmVsYg==", likes: "1,567", caption: "Heritage gold necklace set" },
+  { image: "/assets/images/SJ 2swirl.png", href: "https://www.instagram.com/p/DU2sc0bDbn4/?igsh=MTlpaWN1YnBiYmVsYg==", likes: "2,345", caption: "Stunning 22K gold swirl pendant and earring set." },
+  { image: "/assets/images/SJ e2.png", href: "https://www.instagram.com/p/DU2sc0bDbn4/?igsh=MTlpaWN1YnBiYmVsYg==", likes: "1,892", caption: "Elegant gold hoop earrings" },
+  { image: "/assets/images/SJ 2.png", href: "https://www.instagram.com/p/DU2sc0bDbn4/?igsh=MTlpaWN1YnBiYmVsYg==", likes: "3,127", caption: "22K Gold bangles - traditional craftsmanship" },
+  { image: "/assets/images/SJ e1.png", href: "https://www.instagram.com/p/DU2sc0bDbn4/?igsh=MTlpaWN1YnBiYmVsYg==", likes: "2,654", caption: "Diamond engagement ring" },
+  { image: "/assets/images/SJ n1.png", href: "https://www.instagram.com/p/DU2sc0bDbn4/?igsh=MTlpaWN1YnBiYmVsYg==", likes: "4,210", caption: "Bridal necklace collection" },
+  { image: "/assets/images/SJ r12.png", href: "https://www.instagram.com/p/DU2sc0bDbn4/?igsh=MTlpaWN1YnBiYmVsYg==", likes: "1,567", caption: "Heritage gold necklace set" },
 ];
 
 export function Gallery() {

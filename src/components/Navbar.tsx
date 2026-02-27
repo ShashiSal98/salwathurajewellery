@@ -343,7 +343,7 @@ export function Navbar() {
             </div> */}
             <div className="flex flex-col">
               <img
-                src={isDark ? "./src/assets/images/footer SJ_logo.png" : "./src/assets/images/SJ_logo.png"}
+                src={isDark ? "/assets/images/footer SJ_logo.png" : "/assets/images/SJ_logo.png"}
                 alt="Salwathura Jewellery"
                 className="h-10 w-auto object-contain"
               />

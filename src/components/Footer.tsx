@@ -39,7 +39,7 @@ export function Footer() {
           <div>
            <a href="#home" className="flex items-center gap-3 mb-6">
               {/* <Diamond className="w-7 h-7 text-gold-400" /> */}
-              <img src="./src/assets/images/footer SJ_logo.png" alt="Salwathura Jewellery" className="h-10 w-auto object-contain" />
+              <img src="/assets/images/footer SJ_logo.png" alt="Salwathura Jewellery" className="h-10 w-auto object-contain" />
             </a>
             <p className="font-montserrat text-sm text-white/30 leading-relaxed mb-6">
               Crafting timeless pieces of elegance and beauty. Your trusted jewellery destination in Sri Lanka.

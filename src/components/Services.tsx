@@ -6,7 +6,7 @@ const services = [
   { icon: Gem, title: "Custom Jewellery Design", description: "Bring your dream jewellery to life with our bespoke design service tailored to your vision.", image: "https://images.unsplash.com/photo-1617038220319-276d3cfab638?w=300&h=200&fit=crop" },
   { icon: Paintbrush, title: "Jewellery Restoration", description: "Breathe new life into cherished heirloom pieces with expert restoration services.", image: "https://images.unsplash.com/photo-1573408301185-9146fe634ad0?w=300&h=200&fit=crop" },
   { icon: Wrench, title: "Repair & Resizing", description: "Professional ring resizing, chain repairs, and all types of jewellery restoration.", image: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=300&h=200&fit=crop" },
-  { icon: Gift, title: "Bridal Collections", description: "Complete bridal jewellery packages for your special day — necklaces, earrings & more.", image: "./src/assets/images/SJS r2.png" },
+  { icon: Gift, title: "Bridal Collections", description: "Complete bridal jewellery packages for your special day — necklaces, earrings & more.", image: "/assets/images/SJS r2.png" },
   { icon: Scale, title: "Gold & Gem Valuation", description: "Get accurate valuations from certified experts for insurance or resale purposes.", image: "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=300&h=200&fit=crop" },
   { icon: Truck, title: "Islandwide Service", description: "We serve customers across Sri Lanka. Contact us for arrangements at your convenience.", image: "https://images.unsplash.com/photo-1602751584552-8ba73aad10e1?w=300&h=200&fit=crop" },
 ];

@@ -2,9 +2,9 @@ import { ChevronDown, Sparkles } from "lucide-react";
 import { useTheme } from "../context/ThemeContext";
 
 const heroImages = [
-  "./src/assets/images/SJ e1.png",
-   "./src/assets/images/SJ 1.png",
- "./src/assets/images/SJS r1.png",
+  "/assets/images/SJ e1.png",
+   "/assets/images/SJ 1.png",
+ "/assets/images/SJS r1.png",
 ];
 
 export function Hero() {
@@ -16,7 +16,7 @@ export function Hero() {
       {/* Background Image */}
       <div className="absolute inset-0">
         <img
-          src="./src/assets/images/hero2.png"
+          src="/assets/images/hero2.png"
           alt="Luxury jewelry background"
           className="w-full h-full object-cover"
         />
