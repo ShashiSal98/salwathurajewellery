@@ -2,9 +2,9 @@ import { ChevronDown, Sparkles } from "lucide-react";
 import { useTheme } from "../context/ThemeContext";
 
 const heroImages = [
-  "/assets/images/SJ e1.png",
+  "/assets/images/SJ e1 1.png",
    "/assets/images/SJ 1.png",
- "/assets/images/SJS r1.png",
+ "/assets/images/SJS r1 1.png",
 ];
 
 export function Hero() {

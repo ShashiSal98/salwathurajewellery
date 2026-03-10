@@ -20,15 +20,18 @@ const curatedSubcategories = ["All", "New Arrivals", "Best Sellers", "Limited Ed
 
 const goldProducts: Product[] = [
   {
-    id: 1, name: "Gold Aura Circle Necklace", category: "Necklaces", price: "LKR 285,000",
+    id: 1, name: "Gold Aura Circle Necklace", category: "Necklaces", price: "LKR 165,000",
     description: "22K gold necklace with an Aura circular pendant",
-    image: "/assets/images/SJ n5.png",
+    image: "/assets/images/SJ n5 1.png",
     images: [
-      "/assets/images/SJ n5.png",
+      "/assets/images/SJ n5 1.png",
+      "/assets/images/SJ n5 2.png",
+      "/assets/images/SJ n5 3.png",
+
     ],
   },
   {
-    id: 2, name: "Gold Celestial Orbit Ring", category: "Rings", price: "LKR 145,000",
+    id: 2, name: "Gold Celestial Orbit Ring", category: "Rings", price: "LKR 56,710",
     description: "22K gold ring featuring center stone in a radiant circular halo setting",
     image: "/assets/images/SJ r12.png",
     images: [
@@ -38,21 +41,26 @@ const goldProducts: Product[] = [
   {
     id: 3, name: "Gold Huggie Hoop with Solitaire Diamond", category: "Earrings", price: "LKR 78,000",
     description: "22K gold huggie hoop earrings featuring a sparkling solitaire diamond",
-    image: "/assets/images/SJ e1.png",
+    image: "/assets/images/SJ e1 1.png",
     images: [
-      "/assets/images/SJ e1.png",
+      "/assets/images/SJ e1 1.png",
+      "/assets/images/SJ e1 2.png",  
+      "/assets/images/SJ e1 5.png",
+      "/assets/images/SJ e1 4.png",
+
     ],
   },
   {
-    id: 4, name: "Gold Open Cuff Bracelet", category: "Bracelets", price: "LKR 165,000",
+    id: 4, name: "Gold Open Cuff Bracelet", category: "Bracelets", price: "LKR 140,000",
     description: "22K gold slim open cuff with bezel-set round diamonds.",
-    image: "/assets/images/SJ b1.png",
+    image: "/assets/images/SJ b1 1.png",
     images: [
-      "/assets/images/SJ b1.png",
+      "/assets/images/SJ b1 1.png",
+      "/assets/images/SJ b1 2.png",
     ],
   },
   {
-    id: 5, name: "Gold Trinity Orb Ring", category: "Rings", price: "LKR 195,000",
+    id: 5, name: "Gold Trinity Orb Ring", category: "Rings", price: "LKR 65,000",
     description: "22K gold symbolic design featuring the three points of the inner triangle held within a surrounding circle",
     image: "/assets/images/SJ r14.png",
     images: [
@@ -60,27 +68,39 @@ const goldProducts: Product[] = [
     ],
   },
   {
-    id: 6, name: "Gold Petal Earrings", category: "Earrings", price: "LKR 55,000",
+    id: 6, name: "Gold Petal Earrings", category: "Earrings", price: "LKR 40,000",
     description: "Classic 22K gold petal earrings",
-    image: "/assets/images/SJ e2.png",
+    image: "/assets/images/SJ e22 1.png",
     images: [
-      "/assets/images/SJ e2.png",
+      "/assets/images/SJ e22 1.png",
+      "/assets/images/SJ e22 2.png",
     ],
   },
   {
-    id: 7, name: "Gold Triangle Necklace", category: "Necklaces", price: "LKR 425,000",
+    id: 21, name: "Gold Tiny Ball Stud Earrings", category: "Earrings", price: "LKR 30,000",
+    description: "Classic 22K gold tiny ball stud earrings",
+    image: "/assets/images/SJ e21 1.png",
+    images: [
+      "/assets/images/SJ e21 1.png",
+      "/assets/images/SJ e21 2.png",
+    ],
+  },
+  {
+    id: 7, name: "Gold Triangle Necklace", category: "Necklaces", price: "LKR 170,000",
     description: "22K gold triangle pendant featuring a sparkling solitaire",
-    image: "/assets/images/SJ n6.png",
+    image: "/assets/images/SJ n6 1.png",
     images: [
-      "/assets/images/SJ n6.png",
+      "/assets/images/SJ n6 1.png",
+      "/assets/images/SJ n6 2.png",
     ],
   },
   {
-    id: 8, name: "Gold Dainty Bead Bracelet", category: "Bracelets", price: "LKR 210,000",
+    id: 8, name: "Gold Dainty Bead Bracelet", category: "Bracelets", price: "LKR 125,000",
     description: "22K gold satellite chain with dainty beads and an adjustable clasp",
-    image: "/assets/images/SJ b2.png",
+    image: "/assets/images/SJ b2 1.png",
     images: [
-      "/assets/images/SJ b2.png",
+      "/assets/images/SJ b2 1.png",
+      "/assets/images/SJ b2 2.png",
     ],
   },
 ];
@@ -89,202 +109,222 @@ const silverProducts: Product[] = [
   {
     id: 9, name: "Silver Citrine Halo Necklace", category: "Necklaces", price: "LKR 18,500",
     description: "925 sterling silver necklace featuring a radiant sunburst yellow citrine pendant",
-    image: "/assets/images/SJS n1.png",
+    image: "/assets/images/SJS n1 1.png",
     images: [
-      "/assets/images/SJS n1.png",
+      "/assets/images/SJS n1 1.png",
+      "/assets/images/SJS n1 2.png",
     ],
   },
   {
     id: 10, name: "Silver Oval Ruby Ring", category: "Rings", price: "LKR 8,500",
     description: "Handcrafted 925 silver ring featuring an oval-cut ruby-red gemstone in a minimalist setting",
-    image: "/assets/images/SJS r1.png",
+    image: "/assets/images/SJS r1 1.png",
     images: [
-      "/assets/images/SJS r1.png",
+      "/assets/images/SJS r1 1.png",
+      "/assets/images/SJS r1 2.png",
     ],
   },
   {
-    id: 11, name: "Silver Swiss Blue Topaz Earrings", category: "Earrings", price: "LKR 6,200",
+    id: 11, name: "Silver Swiss Blue Topaz Earrings", category: "Earrings", price: "LKR 10,200",
     description: "925 silver Natural Swiss Blue Topaz Earrings",
-    image: "/assets/images/SJS e1.png",
+    image: "/assets/images/SJS e1 1.png",
     images: [
-      "/assets/images/SJS e1.png",
+      "/assets/images/SJS e1 1.png",
+      "/assets/images/SJS e1 2.png",
     ],
   },
   {
     id: 12, name: "Silver Ruby Bracelet", category: "Bracelets", price: "LKR 12,500",
     description: "925 sterling silver oval cut ruby bracelet",
-    image: "/assets/images/SJS b1.png",
+    image: "/assets/images/SJS b1 1.png",
     images: [
-      "/assets/images/SJS b1.png",
+      "/assets/images/SJS b1 1.png",
+      "/assets/images/SJS b1 2.png",
     ],
   },
   {
-    id: 13,  name: "Silver Karma Studs",
+    id: 13,  name: "Silver Circle Studs",
     category: "Earrings",
-    price: "LKR 4,800",
-    description: "Minimalist 925 Sterling Silver Karma Open Circle Stud Earrings",
-    image:  "/assets/images/SJS e3.png" ,
+    price: "LKR 2,800",
+    description: "Minimalist 925 Sterling Silver Open Circle Stud Earrings",
+    image:  "/assets/images/SJS e3 1.png" ,
     images: [
-      "/assets/images/SJS e3.png",
+      "/assets/images/SJS e3 1.png",
+      "/assets/images/SJS e3 2.png",
     ],
   },
   {
-    id: 14, name: "Silver Oval Amethyst Solitaire Necklace", category: "Necklaces", price: "LKR 15,800",
+    id: 14, name: "Silver Oval Amethyst Solitaire Necklace", category: "Necklaces", price: "LKR 16,400",
     description: "Minimalist 925 Sterling Silver necklace featuring a deep oval-cut amethyst pendant",
-    image: "/assets/images/SJS n2.png",
+    image: "/assets/images/SJS n2 1.png",
     images: [
-      "/assets/images/SJS n2.png",
+      "/assets/images/SJS n2 1.png",
+      "/assets/images/SJS n2 2.png",
     ],
   },
   {
-    id: 15, name: "Silver Vesta Arc Ring", category: "Rings", price: "LKR 3,500",
+    id: 15, name: "Silver Vesta Arc Ring", category: "Rings", price: "LKR 2,500",
     description: "Minimalist 925 Silver Vesta Arc Ring",
-    image: "/assets/images/SJS r2.png",
+    image: "/assets/images/SJS r2 1.png",
     images: [
-      "/assets/images/SJS r2.png",
+      "/assets/images/SJS r2 1.png",
+      "/assets/images/SJS r2 2.png",
     ],
   },
   {
     id: 16, name: "Silver Tennis Bracelet", category: "Bracelets", price: "LKR 22,000",
     description: "Vintage Mixed Gemstone 925 Sterling Silver Tennis Bracelet",
-    image: "/assets/images/SJS b2.png",
+    image: "/assets/images/SJS b2 1.png",
     images: [
-      "/assets/images/SJS b2.png",
+      "/assets/images/SJS b2 1.png",
+      "/assets/images/SJS b2 2.png",
     ],
   },
 ];
 
 const gemProducts: Product[] = [
   {
-    id: 17, name: "Blue Sapphire", category: "Sapphires", price: "LKR 350,000",
+    id: 17, name: "Blue Sapphire", category: "Sapphires", price: "LKR 19,800",
     description: "0_165 Cts Natural Blue Sapphire",
-    image: "/assets/images/blue_sapphire.png", tag: "Premium",
+    image: "/assets/images/blue_sapphire 1.png", tag: "Premium",
     images: [
-      "/assets/images/blue_sapphire.png",
-     "/assets/images/blue sapphire.jpg",
+      "/assets/images/blue_sapphire 1.png",
+     "/assets/images/blue_sapphire 2.png",
     ],
   },
   {
-    id: 18, name: "Ruby", category: "Rubies", price: "LKR 185,000",
+    id: 18, name: "Ruby", category: "Rubies", price: "LKR 350,000",
     description: "Perl Cut Ruby",
-    image: "/assets/images/ruby.png", tag: "Rare",
+    image: "/assets/images/ruby 1.png", tag: "Rare",
     images: [
-      "/assets/images/ruby.png",
+      "/assets/images/ruby 1.png",
+      "/assets/images/ruby 2.png",
     ],
   },
   {
-    id: 19, name: "Emerald", category: "Emeralds", price: "LKR 275,000",
+    id: 19, name: "Emerald", category: "Emeralds", price: "LKR 150,000",
     description: "Natural emerald",
-    image: "/assets/images/emerald.jpg", tag: "Exclusive",
+    image: "/assets/images/emerald 1.png",  tag: "Rare",
     images: [
-      "/assets/images/emerald.jpg",
+      "/assets/images/emerald 1.png",
+      "/assets/images/emerald 2.png",
     ],
   },
   {
-    id: 20, name: "Moonstone", category: "Moonstone", price: "LKR 120,000",
+    id: 20, name: "Moonstone", category: "Moonstone", price: "LKR 15,000",
     description: "Sri Lankan Moonstone chrysoberyl",
-    image: "/assets/images/moonstone.png",
+    image: "/assets/images/moonstone 1.png", tag: "Collector",
     images: [
-      "/assets/images/moonstone.png",
+      "/assets/images/moonstone 1.png",
+      "/assets/images/moonstone 2.png",
     ],
   },
   {
-    id: 21, name: "Yellow Sapphire", category: "Sapphires", price: "LKR 520,000",
+    id: 21, name: "Yellow Sapphire", category: "Sapphires", price: "LKR 181,800",
     description: "1_01 Cts Natural Yellow Sapphire Loose Gemstone Oval Cut",
-    image: "/assets/images/yellow_sapphire.png", tag: "Collector",
+    image: "/assets/images/yellow_sapphire 1.png", tag: "Premium",
     images: [
-      "/assets/images/yellow_sapphire.png",
+      "/assets/images/yellow_sapphire 1.png",
+      "/assets/images/yellow_sapphire 2.png",
     ],
   },
   {
-    id: 22, name: "Pink Sapphire", category: "Sapphires", price: "LKR 290,000",
+    id: 22, name: "Pink Sapphire", category: "Sapphires", price: "LKR 90,000",
     description: "0_69 Cts Natural Fancy Pink Sapphire Loose Gemstone Oval Cut",
-    image: "/assets/images/pink_sapphire.png", tag: "Collector",
+    image: "/assets/images/pink_sapphire 1.png", tag: "Collector",
     images: [
-      "/assets/images/pink_sapphire.png",
+      "/assets/images/pink_sapphire 1.png",
+      "/assets/images/pink_sapphire 2.png",
     ],
   },
   {
-    id: 23, name: "Amethyst", category: "Amethyst", price: "LKR 480,000",
+    id: 23, name: "Amethyst", category: "Amethyst", price: "LKR 5,000",
     description: "Natural Amethyst Loose Gemstones",
-    image: "/assets/images/amethyst.png", tag: "Museum Grade",
+    image: "/assets/images/amethyst 1.png", tag: "Museum Grade",
     images: [
-      "/assets/images/amethyst.png",
+      "/assets/images/amethyst 1.png",
+      "/assets/images/amethyst 2.png",
     ],
   },
   {
-    id: 24, name: "Imperial Champagne Topaz", category: "Topaz", price: "LKR 65,000",
-    description: "7_45Cts Natural Imperial Champagne Topaz",
-    image: "/assets/images/topaz.jpg", 
+    id: 24, name: "Imperial Topaz", category: "Topaz", price: "LKR 600,000",
+    description: "7_45Cts Natural Imperial Topaz", tag: "Exclusive",
+    image: "/assets/images/topaz 1.png", 
     images: [
-      "/assets/images/topaz.jpg",
+      "/assets/images/topaz 1.png",
+      "/assets/images/topaz 2.png",
     ],
   },
 ];
 
 const curatedProducts: Product[] = [
   {
-    id: 25, name: "Silver Oval Ruby Ring", category: "New Arrivals", price: "LKR 8,000",
+    id: 25, name: "Silver Oval Ruby Ring", category: "New Arrivals", price: "LKR 8,500",
     description: "Handcrafted 925 silver ring featuring an oval-cut ruby-red gemstone in a minimalist setting",
-    image: "/assets/images/SJS r1.png", tag: "NEW",
+    image: "/assets/images/SJS r1 1.png", tag: "NEW",
     images: [
-      "/assets/images/SJS r1.png",
+      "/assets/images/SJS r1 1.png",
+      "/assets/images/SJS r1 2.png",
     ],
   },
   {
-    id: 26, name: "Tennis Bracelet", category: "Best Sellers", price: "LKR 385,000",
-    description: "18K white gold with 3ct diamonds",
-    image: "/assets/images/SJ b1.png", tag: "BESTSELLER",
+    id: 26, name: "Gold Open Cuff Bracelet", category: "Best Sellers", price: "LKR 140,000",
+    description: "22K gold slim open cuff with bezel-set round diamond",
+    image: "/assets/images/SJ b1 1.png", tag: "BESTSELLER",
     images: [
-      "/assets/images/SJ b1.png",
+       "/assets/images/SJ b1 1.png",
+      "/assets/images/SJ b1 2.png",
     ],
   },
   {
-    id: 27, name: "Heritage Navaratna Set", category: "Limited Edition", price: "LKR 650,000",
-    description: "Nine gemstones in 22K gold",
+    id: 27, name: "Star Collection", category: "Limited Edition", price: "LKR 685,000",
+    description: "Minimalist 22k gold star jewelry set, featuring a matching necklace, ring, and earrings in 22K gold",
     image: "/assets/images/SJ 1.png", tag: "LIMITED",
     images: [
       "/assets/images/SJ 1.png",
     ],
   },
   {
-    id: 28, name: "Bridal Ring", category: "Wedding Collection", price: "LKR 890,000",
-    description: "Complete bridal jewellery set",
-    image: "/assets/images/SJS r2.png", tag: "BRIDAL",
+    id: 28, name: "Bridal Ring", category: "Wedding Collection", price: "LKR 545,000",
+    description: "An elegant 22k gold bridal ring set for the groom and bride",
+    image: "/assets/images/SJ w1 1.png", tag: "BRIDAL",
     images: [
-      "/assets/images/SJS r2.png",
+      "/assets/images/SJ w1 1.png",
+      "/assets/images/SJ w1 2.png",
     ],
   },
   {
-    id: 29, name: "Minimalist Chain", category: "Everyday Essentials", price: "LKR 35,000",
-    description: "18K gold dainty everyday chain",
-    image: "/assets/images/SJS n1.png", tag: "DAILY",
+    id: 29, name: "Minimalist Chain", category: "Everyday Essentials", price: "LKR 52,300",
+    description: "22K gold dainty everyday chain",
+    image: "/assets/images/SJ n4 1.png", tag: "DAILY",
     images: [
-      "/assets/images/SJS n1.png",
+      "/assets/images/SJ n4 1.png",
+      "/assets/images/SJ n4 2.png",
     ],
   },
   {
-    id: 30, name: "Pearl Drop Earrings", category: "New Arrivals", price: "LKR 42,000",
-    description: "Freshwater pearl in 18K gold",
-    image: "/assets/images/SJS e1.png", tag: "NEW",
+    id: 30, name: "Silver Swiss Blue Topaz Earrings", category: "New Arrivals", price: "LKR 10,200",
+    description: "925 silver Natural Swiss Blue Topaz Earrings",
+    image: "/assets/images/SJS e1 1.png", tag: "NEW",
     images: [
-      "/assets/images/SJS e1.png",
+      "/assets/images/SJS e1 1.png",
+      "/assets/images/SJS e1 2.png",
     ],
   },
   {
-    id: 31, name: "Solitaire Diamond Ring", category: "Best Sellers", price: "LKR 295,000",
-    description: "Classic 0.5ct solitaire in 18K gold",
+    id: 31, name:  "Gold Celestial Orbit Ring", category: "Best Sellers", price:  "LKR 56,710",
+    description:  "22K gold ring featuring center stone in a radiant circular halo setting",
     image: "/assets/images/SJ r12.png", tag: "BESTSELLER",
     images: [
       "/assets/images/SJ r12.png",
     ],
   },
   {
-    id: 32, name: "Mangalsutra Necklace", category: "Wedding Collection", price: "LKR 125,000",
-    description: "Modern 22K gold mangalsutra",
-    image: "/assets/images/SJ n5.png", tag: "BRIDAL",
+    id: 32, name: "Gold Aura Circle Necklace", category: "Wedding Collection", price:  "LKR 165,000",
+    description:  "22K gold necklace with an Aura circular pendant",
+    image: "/assets/images/SJ n5 1.png", tag: "BRIDAL",
     images: [
-      "/assets/images/SJ n5.png",
+      "/assets/images/SJ n5 1.png",
     ],
   },
 ];

@@ -28,10 +28,10 @@ interface ProductModalProps {
 }
 
 const productDetails: Record<string, { material: string; weight: string; purity: string; size: string; origin: string }> = {
-  gold: { material: "22K / 18K Gold", weight: "8g - 45g", purity: "916 / 750 Hallmarked", size: "Adjustable", origin: "Sri Lanka" },
+  gold: { material: "22K Gold", weight: "1g - 45g", purity: "916 / 750 Hallmarked", size: "Adjustable", origin: "Sri Lanka" },
   silver: { material: "925 Sterling Silver", weight: "5g - 30g", purity: "925 Certified", size: "Adjustable", origin: "Sri Lanka" },
   gem: { material: "18K Gold + Gemstone", weight: "4g - 20g", purity: "Certified Gems", size: "Custom", origin: "Ceylon (Sri Lanka)" },
-  curated: { material: "18K / 22K Gold", weight: "6g - 50g", purity: "Hallmarked", size: "Various", origin: "Sri Lanka" },
+  curated: { material: "22K Gold / 925 Sterling Silver", weight: "6g - 50g", purity: "Hallmarked", size: "Various", origin: "Sri Lanka" },
 };
 
 const reviews = [
@@ -95,7 +95,7 @@ export function ProductModal({ product, isOpen, onClose, onNext, onPrev, allProd
   const getType = (): string => {
     if (!product) return "gold";
     const cat = product.category;
-    if (cat === "Sapphires" || cat === "Rubies" || cat === "Emeralds" || cat === "Moonstone" || cat === "Amethyst" || cat === "Topaz") return "gem";
+    if (cat === "Sapphires" || cat === "Rubies" || cat === "Emeralds" || cat === "Moonstone" || cat === "Amethyst" || cat === "Diamonds") return "gem";
     if (cat === "New Arrivals" || cat === "Best Sellers" || cat === "Limited Edition" || cat === "Wedding Collection" || cat === "Everyday Essentials") return "curated";
     if (product.price.includes("LKR 3,") || product.price.includes("LKR 4,") || product.price.includes("LKR 6,") || product.price.includes("LKR 8,") || product.price.includes("LKR 12,") || product.price.includes("LKR 15,") || product.price.includes("LKR 18,") || product.price.includes("LKR 22,")) return "silver";
     return "gold";
@@ -110,7 +110,7 @@ export function ProductModal({ product, isOpen, onClose, onNext, onPrev, allProd
       // Check if same type
       const pCat = p.category;
       if (currentType === "gem") {
-        return pCat === "Sapphires" || pCat === "Rubies" || pCat === "Emeralds" || pCat === "Moonstone" || pCat === "Amethyst" || pCat === "Topaz";
+        return pCat === "Sapphires" || pCat === "Rubies" || pCat === "Emeralds" || pCat === "Moonstone" || pCat === "Amethyst" || pCat === "Diamonds";
       }
       if (currentType === "curated") {
         return pCat === "New Arrivals" || pCat === "Best Sellers" || pCat === "Limited Edition" || pCat === "Wedding Collection" || pCat === "Everyday Essentials";
@@ -119,7 +119,7 @@ export function ProductModal({ product, isOpen, onClose, onNext, onPrev, allProd
         return p.price.includes("LKR 3,") || p.price.includes("LKR 4,") || p.price.includes("LKR 6,") || p.price.includes("LKR 8,") || p.price.includes("LKR 12,") || p.price.includes("LKR 15,") || p.price.includes("LKR 18,") || p.price.includes("LKR 22,");
       }
       // gold — check not in other categories
-      const isGem = pCat === "Sapphires" || pCat === "Rubies" || pCat === "Emeralds" || pCat === "Moonstone" || pCat === "Amethyst" || pCat === "Topaz";
+      const isGem = pCat === "Sapphires" || pCat === "Rubies" || pCat === "Emeralds" || pCat === "Moonstone" || pCat === "Amethyst" || pCat === "Diamonds";
       const isCurated = pCat === "New Arrivals" || pCat === "Best Sellers" || pCat === "Limited Edition" || pCat === "Wedding Collection" || pCat === "Everyday Essentials";
       const isSilver = p.price.includes("LKR 3,") || p.price.includes("LKR 4,") || p.price.includes("LKR 6,") || p.price.includes("LKR 8,") || p.price.includes("LKR 12,") || p.price.includes("LKR 15,") || p.price.includes("LKR 18,") || p.price.includes("LKR 22,");
       return !isGem && !isCurated && !isSilver;

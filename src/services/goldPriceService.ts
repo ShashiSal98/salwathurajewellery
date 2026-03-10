@@ -1,10 +1,8 @@
 /**
- * Gold & Silver Price Service — metals.dev API
- *
- * Primary: https://api.metals.dev/v1/latest?api_key=YN4P3KB4I3TSGXFVKHFA640FVKHFA&currency=LKR&unit=g
- *
- * Returns gold & silver prices directly in LKR per gram.
- * All prices and rates are calculated according to the CBSL (Central Bank of Sri Lanka).
+ * Gold & Silver Price Service
+ * 
+ * Fetches live international gold/silver spot prices using GoldAPI.io
+ * Formula: Gold per gram (LKR) = (Gold USD/oz × USD/LKR) ÷ 31.1035
  */
 
 export interface LivePriceData {
@@ -14,38 +12,32 @@ export interface LivePriceData {
   gold18kPerGram: number;
   silver999PerGram: number;
   silver925PerGram: number;
+  silver900PerGram: number;
   goldPerOzLKR: number;
   silverPerOzLKR: number;
   lastUpdated: string;
   source: "live" | "cached" | "default";
+  provider: string;
 }
 
-const API_KEY = "YN4P3KB4I3TSGXFVKHFA640FVKHFA";
-const API_URL = `https://api.metals.dev/v1/latest?api_key=${API_KEY}&currency=LKR&unit=g`;
-
-const CACHE_KEY = "salwathura_gold_prices_v3";
-const CACHE_DURATION = 10 * 60 * 1000; // 10 minutes
+const CACHE_KEY = "salwathura_live_prices_v22";
+const CACHE_DURATION = 5 * 60 * 1000; // 5 minutes (GoldAPI allows many requests)
 const TROY_OZ_TO_GRAMS = 31.1035;
 
-// Realistic fallback prices
-const DEFAULT_PRICES: LivePriceData = {
-  gold24kPerGram: 34250,
-  gold22kPerGram: 31396,
-  gold21kPerGram: 29969,
-  gold18kPerGram: 25688,
-  silver999PerGram: 418,
-  silver925PerGram: 387,
-  goldPerOzLKR: 1065200,
-  silverPerOzLKR: 12990,
-  lastUpdated: new Date().toISOString(),
-  source: "default",
-};
+// GoldAPI.io credentials
+const GOLD_API_TOKEN = "goldapi-1h8hsmmkdfdt6-io";
+const GOLD_API_BASE = "https://www.goldapi.io/api";
 
-function getCachedPrices(): LivePriceData | null {
+// Exchange rate API (free, no key needed)
+const EXCHANGE_RATE_API = "https://open.er-api.com/v6/latest/USD";
+
+// ===== Cache helpers =====
+
+function getCached(): LivePriceData | null {
   try {
-    const cached = localStorage.getItem(CACHE_KEY);
-    if (!cached) return null;
-    const data = JSON.parse(cached) as LivePriceData;
+    const raw = localStorage.getItem(CACHE_KEY);
+    if (!raw) return null;
+    const data = JSON.parse(raw) as LivePriceData;
     const age = Date.now() - new Date(data.lastUpdated).getTime();
     if (age > CACHE_DURATION) return null;
     return { ...data, source: "cached" };
@@ -54,169 +46,324 @@ function getCachedPrices(): LivePriceData | null {
   }
 }
 
-function setCachedPrices(prices: LivePriceData): void {
+function setCache(prices: LivePriceData): void {
   try {
     localStorage.setItem(CACHE_KEY, JSON.stringify(prices));
+  } catch { /* ignore */ }
+}
+
+function getExpiredCache(): LivePriceData | null {
+  try {
+    const raw = localStorage.getItem(CACHE_KEY);
+    if (!raw) return null;
+    return { ...JSON.parse(raw) as LivePriceData, source: "cached" };
   } catch {
-    // Storage unavailable
+    return null;
   }
 }
 
-/**
- * Build all price data from gold & silver per gram in LKR
- */
-function buildPrices(goldPerGramLKR: number, silverPerGramLKR: number): LivePriceData {
-  const g24 = Math.round(goldPerGramLKR);
+// ===== Build price object =====
+
+function buildFromGoldSilverPerGram(
+  goldPerGram: number,
+  silverPerGram: number,
+  provider: string
+): LivePriceData {
+  const g24 = Math.round(goldPerGram);
+  const s999 = Math.round(silverPerGram);
+  
   return {
     gold24kPerGram: g24,
-    gold22kPerGram: Math.round(g24 * (22 / 24)),
-    gold21kPerGram: Math.round(g24 * (21 / 24)),
-    gold18kPerGram: Math.round(g24 * (18 / 24)),
-    silver999PerGram: Math.round(silverPerGramLKR),
-    silver925PerGram: Math.round(silverPerGramLKR * 0.925),
-    goldPerOzLKR: Math.round(goldPerGramLKR * TROY_OZ_TO_GRAMS),
-    silverPerOzLKR: Math.round(silverPerGramLKR * TROY_OZ_TO_GRAMS),
+    gold22kPerGram: Math.round(g24 * 22 / 24),
+    gold21kPerGram: Math.round(g24 * 21 / 24),
+    gold18kPerGram: Math.round(g24 * 18 / 24),
+    silver999PerGram: s999,
+    silver925PerGram: Math.round(s999 * 0.925),
+    silver900PerGram: Math.round(s999 * 0.9),
+    goldPerOzLKR: Math.round(goldPerGram * TROY_OZ_TO_GRAMS),
+    silverPerOzLKR: Math.round(silverPerGram * TROY_OZ_TO_GRAMS),
     lastUpdated: new Date().toISOString(),
     source: "live",
+    provider,
   };
 }
 
-/**
- * Strategy 1: Direct fetch from metals.dev API
- */
-async function fetchDirect(): Promise<LivePriceData | null> {
+// ===== CORS proxy helpers =====
+
+const PROXIES = [
+  (u: string) => `https://api.allorigins.win/raw?url=${encodeURIComponent(u)}`,
+  (u: string) => `https://corsproxy.io/?${encodeURIComponent(u)}`,
+  (u: string) => `https://api.codetabs.com/v1/proxy?quest=${encodeURIComponent(u)}`,
+];
+
+async function fetchJSON(url: string, options?: RequestInit, timeout = 10000): Promise<unknown> {
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), timeout);
+  
   try {
-    const res = await fetch(API_URL, { signal: AbortSignal.timeout(10000) });
+    const res = await fetch(url, { ...options, signal: controller.signal });
+    clearTimeout(timeoutId);
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const data: any = await res.json();
-
-    if (data.status === "success" && data.metals) {
-      const gold = data.metals.gold;
-      const silver = data.metals.silver;
-      if (gold && gold > 1000) {
-        console.log("✅ metals.dev Direct — Gold:", gold, "Silver:", silver);
-        return buildPrices(gold, silver || gold / 82);
-      }
-    }
-  } catch (e) {
-    console.warn("metals.dev direct failed:", e);
+    return res.json();
+  } catch (error) {
+    clearTimeout(timeoutId);
+    throw error;
   }
-  return null;
 }
 
-/**
- * Strategy 2: Fetch via CORS proxy
- */
-async function fetchViaProxy(): Promise<LivePriceData | null> {
-  const proxies = [
-    `https://api.allorigins.win/raw?url=${encodeURIComponent(API_URL)}`,
-    `https://corsproxy.io/?${encodeURIComponent(API_URL)}`,
-    `https://api.codetabs.com/v1/proxy?quest=${encodeURIComponent(API_URL)}`,
-  ];
-
-  for (const proxyUrl of proxies) {
-    try {
-      const res = await fetch(proxyUrl, { signal: AbortSignal.timeout(12000) });
-      if (!res.ok) continue;
-      const text = await res.text();
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const data: any = JSON.parse(text);
-
-      if (data.status === "success" && data.metals) {
-        const gold = data.metals.gold;
-        const silver = data.metals.silver;
-        if (gold && gold > 1000) {
-          console.log("✅ metals.dev Proxy — Gold:", gold, "Silver:", silver);
-          return buildPrices(gold, silver || gold / 82);
-        }
-      }
-    } catch {
-      continue;
-    }
-  }
-  console.warn("All metals.dev proxies failed");
-  return null;
-}
-
-/**
- * Strategy 3: CoinGecko PAX-Gold fallback
- */
-async function fetchCoinGeckoFallback(): Promise<LivePriceData | null> {
+async function fetchWithProxies(url: string, options?: RequestInit): Promise<unknown> {
+  // Try direct first
   try {
-    const res = await fetch(
-      "https://api.coingecko.com/api/v3/simple/price?ids=pax-gold&vs_currencies=lkr&include_last_updated_at=true",
-      { signal: AbortSignal.timeout(10000) }
+    return await fetchJSON(url, options);
+  } catch { /* continue to proxies */ }
+  
+  // Try each proxy
+  for (const proxy of PROXIES) {
+    try {
+      const proxyUrl = proxy(url);
+      return await fetchJSON(proxyUrl, options, 12000);
+    } catch { /* continue to next proxy */ }
+  }
+  
+  throw new Error(`All fetches failed for ${url}`);
+}
+
+// =====================================================
+// PRIMARY STRATEGY: GoldAPI.io (with your API key)
+// =====================================================
+
+async function fetchFromGoldAPI(): Promise<LivePriceData | null> {
+  try {
+    // Fetch gold price in USD
+    const goldOptions = {
+      method: 'GET',
+      headers: {
+        'x-access-token': GOLD_API_TOKEN,
+        'Content-Type': 'application/json'
+      }
+    };
+
+    // Fetch silver price in USD
+    const silverOptions = {
+      method: 'GET',
+      headers: {
+        'x-access-token': GOLD_API_TOKEN,
+        'Content-Type': 'application/json'
+      }
+    };
+
+    // Fetch both gold and silver in parallel
+    const [goldResponse, silverResponse, rateResponse] = await Promise.allSettled([
+      fetchWithProxies(`${GOLD_API_BASE}/XAU/USD`, goldOptions),
+      fetchWithProxies(`${GOLD_API_BASE}/XAG/USD`, silverOptions),
+      fetchWithProxies(EXCHANGE_RATE_API)
+    ]);
+
+    // Get USD to LKR rate
+    let usdToLkr = 320; // fallback rate
+    if (rateResponse.status === 'fulfilled') {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const rateData = rateResponse.value as any;
+      if (rateData?.rates?.LKR) {
+        usdToLkr = rateData.rates.LKR;
+      }
+    }
+
+    // Process gold data
+    let goldUsdPerOz = 0;
+    if (goldResponse.status === 'fulfilled') {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const goldData = goldResponse.value as any;
+      if (goldData?.price) {
+        goldUsdPerOz = goldData.price;
+        console.log(`✅ GoldAPI.io: Gold = $${goldUsdPerOz}/oz`);
+      }
+    }
+
+    // Process silver data
+    let silverUsdPerOz = 0;
+    if (silverResponse.status === 'fulfilled') {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const silverData = silverResponse.value as any;
+      if (silverData?.price) {
+        silverUsdPerOz = silverData.price;
+        console.log(`✅ GoldAPI.io: Silver = $${silverUsdPerOz}/oz`);
+      }
+    }
+
+    // If we have at least gold price, calculate everything
+    if (goldUsdPerOz > 0) {
+      // Calculate LKR per gram
+      const goldPerGramLKR = (goldUsdPerOz * usdToLkr) / TROY_OZ_TO_GRAMS;
+      
+      // Calculate silver per gram (either from API or estimate)
+      let silverPerGramLKR = goldPerGramLKR / 85; // fallback estimate
+      if (silverUsdPerOz > 0) {
+        silverPerGramLKR = (silverUsdPerOz * usdToLkr) / TROY_OZ_TO_GRAMS;
+      }
+
+      console.log(`📊 Calculated Rates:\n` +
+        `   Gold: LKR ${Math.round(goldPerGramLKR)}/g (${Math.round(goldPerGramLKR * 8)}/8g)\n` +
+        `   Silver: LKR ${Math.round(silverPerGramLKR)}/g\n` +
+        `   USD/LKR: ${usdToLkr.toFixed(2)}`
+      );
+
+      return buildFromGoldSilverPerGram(
+        goldPerGramLKR,
+        silverPerGramLKR,
+        `GoldAPI.io (1 USD = ${usdToLkr.toFixed(2)} LKR)`
+      );
+    }
+
+    return null;
+  } catch (e) {
+    console.warn("Strategy 1 (GoldAPI.io) failed:", e);
+    return null;
+  }
+}
+
+// =====================================================
+// STRATEGY 2: metals.live (free) + exchange rate API
+// =====================================================
+
+async function fetchFromMetalsLiveAndExchangeRate(): Promise<LivePriceData | null> {
+  try {
+    const [spotData, rateData] = await Promise.all([
+      fetchWithProxies("https://api.metals.live/v1/spot"),
+      fetchWithProxies(EXCHANGE_RATE_API),
+    ]);
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const spot: any = Array.isArray(spotData) ? spotData[0] : spotData;
+    const goldUsdPerOz = spot?.gold;
+    const silverUsdPerOz = spot?.silver;
+
+    if (!goldUsdPerOz || goldUsdPerOz < 1000) {
+      return null;
+    }
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const usdToLkr = (rateData as any)?.rates?.LKR;
+    if (!usdToLkr || usdToLkr < 100) {
+      return null;
+    }
+
+    const goldPerGramLKR = (goldUsdPerOz * usdToLkr) / TROY_OZ_TO_GRAMS;
+    const silverPerGramLKR = silverUsdPerOz
+      ? (silverUsdPerOz * usdToLkr) / TROY_OZ_TO_GRAMS
+      : goldPerGramLKR / 85;
+
+    return buildFromGoldSilverPerGram(
+      goldPerGramLKR,
+      silverPerGramLKR,
+      `metals.live (1 USD = ${usdToLkr.toFixed(2)} LKR)`
     );
-    if (res.ok) {
-      const data = await res.json();
-      const lkrPrice = data?.["pax-gold"]?.lkr;
-      if (lkrPrice && lkrPrice > 100000) {
-        const goldPerGram = lkrPrice / TROY_OZ_TO_GRAMS;
-        const silverPerGram = goldPerGram / 82;
-        console.log("✅ CoinGecko Fallback — Gold/oz:", lkrPrice, "Gold/g:", Math.round(goldPerGram));
-        return buildPrices(goldPerGram, silverPerGram);
+  } catch (e) {
+    console.warn("Strategy 2 (metals.live) failed:", e);
+    return null;
+  }
+}
+
+// =====================================================
+// STRATEGY 3: fawazahmed0 currency API (free, no key)
+// =====================================================
+
+async function fetchFromCurrencyAPI(): Promise<LivePriceData | null> {
+  try {
+    const data = await fetchWithProxies(
+      "https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/xau.json"
+    );
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const xauRates = (data as any)?.xau;
+    if (xauRates?.lkr) {
+      const goldPerOzLKR = xauRates.lkr;
+      if (goldPerOzLKR > 100000) {
+        const goldPerGram = goldPerOzLKR / TROY_OZ_TO_GRAMS;
+
+        let silverPerGram = goldPerGram / 85;
+        try {
+          const silverData = await fetchWithProxies(
+            "https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/xag.json"
+          );
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          const xagLkr = (silverData as any)?.xag?.lkr;
+          if (xagLkr && xagLkr > 1000) {
+            silverPerGram = xagLkr / TROY_OZ_TO_GRAMS;
+          }
+        } catch { /* use estimate */ }
+
+        return buildFromGoldSilverPerGram(goldPerGram, silverPerGram, "fawazahmed0 currency API");
       }
     }
   } catch (e) {
-    console.warn("CoinGecko fallback failed:", e);
+    console.warn("Strategy 3 (fawazahmed0) failed:", e);
   }
   return null;
 }
 
-/**
- * Main: fetch live gold prices for Sri Lanka
- */
+// =====================================================
+// MAIN: Try all strategies in order
+// =====================================================
+
 export async function fetchLiveGoldPrices(forceRefresh = false): Promise<LivePriceData> {
-  // 1. Check cache first
+  // Check cache (unless forced)
   if (!forceRefresh) {
-    const cached = getCachedPrices();
+    const cached = getCached();
     if (cached) {
-      console.log("📦 Using cached gold prices");
+      console.log("📦 Using cached prices from", cached.provider);
       return cached;
     }
   }
 
-  // 2. metals.dev Direct
-  let result = await fetchDirect();
-  if (result) {
-    setCachedPrices(result);
-    return result;
-  }
+  // Try each strategy in order (prioritizing GoldAPI.io)
+  const strategies = [
+    fetchFromGoldAPI,
+    fetchFromMetalsLiveAndExchangeRate,
+    fetchFromCurrencyAPI,
+  ];
 
-  // 3. metals.dev via CORS Proxy
-  result = await fetchViaProxy();
-  if (result) {
-    setCachedPrices(result);
-    return result;
-  }
-
-  // 4. CoinGecko PAX-Gold fallback
-  result = await fetchCoinGeckoFallback();
-  if (result) {
-    setCachedPrices(result);
-    return result;
-  }
-
-  // 5. Try expired cache
-  try {
-    const expiredCache = localStorage.getItem(CACHE_KEY);
-    if (expiredCache) {
-      const data = JSON.parse(expiredCache) as LivePriceData;
-      console.log("📦 Using expired cache as fallback");
-      return { ...data, source: "cached" };
+  for (const strategy of strategies) {
+    const result = await strategy();
+    if (result && result.gold24kPerGram > 0) {
+      setCache(result);
+      return result;
     }
-  } catch {
-    // ignore
   }
 
-  // 6. Default prices
-  console.log("⚠️ Using default prices");
-  return { ...DEFAULT_PRICES };
+  // Try expired cache as last resort
+  const expired = getExpiredCache();
+  if (expired) {
+    console.log("📦 Using expired cache from", expired.provider);
+    return expired;
+  }
+
+  // Return fallback with zeros - UI will show loading/retry state
+  console.warn("⚠️ All price sources failed — no data available");
+  return {
+    gold24kPerGram: 0,
+    gold22kPerGram: 0,
+    gold21kPerGram: 0,
+    gold18kPerGram: 0,
+    silver999PerGram: 0,
+    silver925PerGram: 0,
+    silver900PerGram: 0,
+    goldPerOzLKR: 0,
+    silverPerOzLKR: 0,
+    lastUpdated: new Date().toISOString(),
+    source: "default",
+    provider: "unavailable",
+  };
 }
 
 /**
- * Generate simulated previous day price for comparison
+ * Clear all cached data (for refresh button)
+ */
+export function clearAllCaches(): void {
+  localStorage.removeItem(CACHE_KEY);
+}
+
+/**
+ * Generate simulated previous day price for comparison display
  */
 export function generatePreviousPrice(current: number, volatility = 0.004): number {
   const change = current * (Math.random() * volatility * 2 - volatility);

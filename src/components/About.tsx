@@ -35,7 +35,7 @@ export function About() {
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-4">
                   <div className="rounded-2xl overflow-hidden shadow-xl img-zoom h-48">
-                    <img src="/assets/images/yellow sapphire.jpg"  alt="Gemstones" className="w-full h-full object-cover" />
+                    <img src="/assets/images/SJ r12.png"  alt="Ring" className="w-full h-full object-cover" />
                   </div>
                   <div className="rounded-2xl overflow-hidden shadow-xl img-zoom h-32">
                     <img src="/assets/images/SJS e2.png" alt="Gold necklace" className="w-full h-full object-cover" />
@@ -43,10 +43,10 @@ export function About() {
                 </div>
                 <div className="space-y-4 pt-8">
                   <div className="rounded-2xl overflow-hidden shadow-xl img-zoom h-32">
-                    <img src="/assets/images/SJS r2.png"  alt="Diamond ring" className="w-full h-full object-cover" />
+                    <img src="/assets/images/SJS b1 1.png"  alt="Diamond ring" className="w-full h-full object-cover" />
                   </div>
                   <div className="rounded-2xl overflow-hidden shadow-xl img-zoom h-48">
-                    <img src="/assets/images/SJS n1.png" alt="Gold jewelry" className="w-full h-full object-cover" />
+                    <img src="/assets/images/SJS n1 1.png" alt="Gold jewelry" className="w-full h-full object-cover" />
                   </div>
                 </div>
               </div>
@@ -71,7 +71,7 @@ export function About() {
                   in the art of fine jewellery making in Sri Lanka.
                 </p>
                 <p className={`font-montserrat text-sm ${isDark ? "text-white/50" : "text-dark-brown/50"} leading-relaxed`}>
-                  Every piece in our collection tells a story — of ancient traditions meeting
+                  Every piece in our collection tells a story - of ancient traditions meeting
                   contemporary design, of precious metals and gemstones transformed by skilled
                   hands into wearable works of art.
                 </p>
