@@ -37,7 +37,7 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Brand */}
           <div>
-           <a href="#home" className="flex items-center gap-3 mb-6">
+            <a href="#home" className="flex items-center gap-3 mb-6">
               {/* <Diamond className="w-7 h-7 text-gold-400" /> */}
               <img src="/assets/images/footer SJ_logo.png" alt="Salwathura Jewellery" className="h-10 w-auto object-contain" />
             </a>
@@ -103,6 +103,16 @@ export function Footer() {
             <p className="font-montserrat text-xs text-white/20">© {new Date().getFullYear()} Salwathura Jewellery. All rights reserved.</p>
             <p className="font-montserrat text-xs text-white/20 flex items-center gap-1">
               Made with <Heart className="w-3 h-3 text-red-400 fill-red-400" /> in Sri Lanka
+            </p>
+            <p className="font-montserrat text-xs text-white/20 mt-1">
+              Designed by  <a
+                href="www.stechsolution.lk"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-white/40 transition-colors"
+              >
+                STech Solution
+              </a>
             </p>
           </div>
         </div>
