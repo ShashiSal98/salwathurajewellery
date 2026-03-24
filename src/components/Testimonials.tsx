@@ -4,28 +4,28 @@ import { useInView } from "../hooks/useInView";
 
 const testimonials = [
   {
-    name: "Amaya Perera",
-    role: "Bride",
-    text: "Salwathura Jewellery made my wedding day truly special. The bridal set was absolutely stunning and the craftsmanship was beyond my expectations.",
+    name: "Dinuka & Gimhani",
+    role: "Couple",
+    text: "Salwathura Jewellery made our wedding day truly unforgettable. The bridal set was breathtaking, and the craftsmanship exceeded all our expectations.",
     rating: 5,
-    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop&crop=face",
+    image: "/assets/images/customers/d.JPG",
   },
   {
-    name: "Kasun Fernando",
+    name: "Champika",
     role: "Regular Customer",
     text: "I've been buying gold jewellery from Salwathura for years. Their quality is unmatched and the designs are always unique and beautiful.",
     rating: 5,
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face",
+    image: "/assets/images/customers/champika.jpg",
   },
   {
-    name: "Dilini Jayawardena",
-    role: "Custom Order",
-    text: "Had a custom engagement ring designed here. They understood exactly what I wanted and delivered a masterpiece. Attention to detail is remarkable!",
+    name: "Sandya",
+    role: "Regular Customer",
+    text: "Had a custom ring designed here. They understood exactly what I wanted and delivered a masterpiece. Attention to detail is remarkable!",
     rating: 5,
-    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face",
+    image: "/assets/images/customers/sandya.png",
   },
   {
-    name: "Ruwan Silva",
+    name: "Raveen",
     role: "Anniversary Gift",
     text: "Purchased a beautiful necklace for our anniversary. My wife absolutely loved it. Fair pricing and genuine gold quality. Never disappoints!",
     rating: 5,
@@ -63,11 +63,10 @@ export function Testimonials() {
           {testimonials.map((testimonial) => (
             <div
               key={testimonial.name}
-              className={`group p-8 rounded-2xl transition-all duration-500 hover:-translate-y-1 ${
-                isDark
+              className={`group p-8 rounded-2xl transition-all duration-500 hover:-translate-y-1 ${isDark
                   ? "bg-white/5 border border-gold-400/10 hover:border-gold-400/30 hover:shadow-xl hover:shadow-gold-400/5"
                   : "bg-white border border-gray-100 hover:border-gold-300/50 hover:shadow-2xl hover:shadow-gold-200/20"
-              }`}
+                }`}
             >
               <div className="flex items-center gap-1 mb-4">
                 {[...Array(testimonial.rating)].map((_, i) => (
