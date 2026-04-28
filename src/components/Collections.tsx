@@ -14,7 +14,7 @@ const tabConfig: { key: CollectionTab; label: string; icon: ReactNode; descripti
   { key: "curated", label: "Curated Collections", icon: <Crown className="w-4 h-4 text-gold-400" />, description: "Specially curated for you" },
 ];
 
-const goldSubcategories = ["All", "Earrings", "Rings", "Necklaces", "Bracelets"];
+const goldSubcategories = ["All", "Earrings", "Rings", "Necklaces", "Bracelets", "Men's Chains"];
 const silverSubcategories = ["All", "Earrings", "Rings", "Necklaces", "Bracelets"];
 const curatedSubcategories = ["All", "New Arrivals", "Best Sellers", "Limited Edition", "Wedding Collection", "Everyday Essentials"];
 
@@ -101,6 +101,86 @@ const goldProducts: Product[] = [
     images: [
       "/assets/images/SJ b2 1.png",
       "/assets/images/SJ b2 2.png",
+    ],
+  },
+  {
+    id: 33, name: "Cuban Chain", category: "Men's Chains", price: "LKR 1,250,000",
+    description: "22K Gold Men's Cuban Chain",
+    image: "/assets/images/SJ mc1.png",
+    images: [
+      "/assets/images/SJ mc1.png",
+      "/assets/images/SJ mc1.1.png",
+
+    ],
+  },
+   {
+    id: 34, name: "Rope Chain", category: "Men's Chains", price: "LKR 650,000",
+    description: "22K Gold Men's Rope Chain",
+    image: "/assets/images/SJ mc2.png",
+    images: [
+      "/assets/images/SJ mc2.png",
+      "/assets/images/SJ mc2.1.png",
+
+    ],
+  },
+  {
+    id: 35, name: "Figaro Chain", category: "Men's Chains", price: "LKR 380,000",
+    description: "22K Gold Men's Figaro Chain",
+    image: "/assets/images/SJ mc3.png",
+    images: [
+      "/assets/images/SJ mc3.png",
+      "/assets/images/SJ mc3.1.png",
+
+    ],
+  },
+   {
+    id: 36, name: "Wheat Chain", category: "Men's Chains", price: "LKR 410,000",
+    description: "22K Gold Men's Wheat Chain",
+    image: "/assets/images/SJ mc4.png",
+    images: [
+      "/assets/images/SJ mc4.png",
+      "/assets/images/SJ mc4.1.png",
+
+    ],
+  },
+     {
+    id: 37, name: "Flat Chain", category: "Men's Chains", price: "LKR 358,240",
+    description: "22K Gold Men's Flat Chain",
+    image: "/assets/images/SJ mc5.png",
+    images: [
+      "/assets/images/SJ mc5.png",
+      "/assets/images/SJ mc5.1.png",
+
+    ],
+  },
+     {
+    id: 38, name: "Snake Chain", category: "Men's Chains", price: "LKR 585,000",
+    description: "22K Gold Men's Snake Chain",
+    image: "/assets/images/SJ mc6.png",
+    images: [
+      "/assets/images/SJ mc6.png",
+      "/assets/images/SJ mc6.1.png",
+
+    ],
+  },
+     {
+    id: 39, name: "Squared Box Chain", category: "Men's Chains", price: "LKR 370,000",
+    description: "22K Gold Men's Squared Box Chain",
+    image: "/assets/images/SJ mc7.png",
+    images: [
+      "/assets/images/SJ mc7.png",
+      "/assets/images/SJ mc7.1.png",
+
+    ],
+  },
+     {
+    id: 40, name: "Rounded Box Chain", category: "Men's Chains", price: "LKR 394,000",
+    description: "22K Gold Men's Rounded Box Chain",
+    image: "/assets/images/SJ mc8.png",
+    images: [
+      "/assets/images/SJ mc8.png",
+      "/assets/images/SJ mc8.1.png",
+
     ],
   },
 ];

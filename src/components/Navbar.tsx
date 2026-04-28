@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef, type ReactNode } from "react";
-import { Menu, X, Diamond, ChevronDown, ChevronRight, Sparkles, Sun, Moon, CircleDot, Gem, Crown, Star, Flame, Heart, Zap, CircleFadingArrowUp } from "lucide-react";
+import { Menu, X, Diamond, ChevronDown, ChevronRight, Sparkles, Sun, Moon, CircleDot, Gem, Crown, Star, Flame, Heart, Zap, CircleFadingArrowUp, CircleGauge, CircleFadingPlus, CircleFadingPlusIcon } from "lucide-react";
 import { useTheme } from "../context/ThemeContext";
 import { navigateToCollection, type CollectionTab } from "../utils/navigationEvents";
 
@@ -33,6 +33,8 @@ const navItems: NavItem[] = [
       { name: "Rings", icon: <Diamond className="w-4 h-4 text-gold-400" />, tab: "gold", subcategory: "Rings" },
       { name: "Necklaces", icon: <Gem className="w-4 h-4 text-gold-400" />, tab: "gold", subcategory: "Necklaces" },
       { name: "Bracelets", icon: <CircleFadingArrowUp className="w-4 h-4 text-gold-400" />, tab: "gold", subcategory: "Bracelets" },
+      { name: "Men's Chains", icon: <CircleFadingPlusIcon className="w-4 h-4 text-gold-400" />, tab: "gold", subcategory: "Men's Chains" },
+
     ],
   },
   {
@@ -328,11 +330,10 @@ export function Navbar() {
     : "text-white hover:bg-white/5";
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-      scrolled
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled
         ? `nav-blur ${isDark ? "bg-[#0f0a06]/95" : "bg-white/90"} shadow-lg ${isDark ? "shadow-black/20" : "shadow-gold-200/20"} py-2`
         : "bg-transparent py-4"
-    }`}>
+      }`}>
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
           {/* Logo */}

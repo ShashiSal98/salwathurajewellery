@@ -340,10 +340,10 @@ export function ProductModal({ product, isOpen, onClose, onNext, onPrev, allProd
                   <MessageCircle className="w-4 h-4" />
                   Inquire on WhatsApp
                 </a>
-                <button className={`flex-1 border-2 border-gold-400 font-montserrat text-sm font-semibold tracking-wider uppercase px-6 py-4 rounded-xl flex items-center justify-center gap-2 transition-all duration-300 hover:scale-[1.02] ${isDark ? "text-gold-400 hover:bg-gold-400/10" : "text-gold-600 hover:bg-gold-50"}`}>
+                {/* <button className={`flex-1 border-2 border-gold-400 font-montserrat text-sm font-semibold tracking-wider uppercase px-6 py-4 rounded-xl flex items-center justify-center gap-2 transition-all duration-300 hover:scale-[1.02] ${isDark ? "text-gold-400 hover:bg-gold-400/10" : "text-gold-600 hover:bg-gold-50"}`}>
                   <ShoppingBag className="w-4 h-4" />
                   Reserve Now
-                </button>
+                </button> */}
               </div>
 
               {/* Tabs */}
