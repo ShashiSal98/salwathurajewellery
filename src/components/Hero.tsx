@@ -16,7 +16,7 @@ export function Hero() {
       {/* Background Image */}
       <div className="absolute inset-0">
         <img
-          src="/assets/images/hero2.png"
+          src="/assets/images/5.png"
           alt="Luxury jewelry background"
           className="w-full h-full object-cover"
         />
@@ -62,7 +62,7 @@ export function Hero() {
         </div>
 
         <p
-          className="font-montserrat text-gold-400 text-xs sm:text-sm tracking-[0.5em] uppercase mb-6 animate-fade-in-up"
+          className="font-montserrat text-white/90 text-xs sm:text-sm tracking-[0.5em] uppercase mb-6 animate-fade-in-up"
           style={{ animationDelay: "0.4s", opacity: 0 }}
         >
           Exquisite Handcrafted Jewellery
@@ -72,7 +72,9 @@ export function Hero() {
           className="font-[--font-display] text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold text-white mb-6 animate-fade-in-up leading-[0.95] tracking-wider"
           style={{ animationDelay: "0.6s", opacity: 0 }}
         >
-          Salwathura
+          
+                    <span className="animate-shimmer font-cormorant italic font-light text-[0.65em] tracking-[0.15em]">Salwathura</span>
+
           <br />
           <span className="animate-shimmer font-cormorant italic font-light text-[0.65em] tracking-[0.15em]">Jewellery</span>
         </h1>

@@ -136,7 +136,7 @@ export function ProductModal({ product, isOpen, onClose, onNext, onPrev, allProd
 
   const tagColors: Record<string, string> = {
     NEW: "bg-emerald-500", BESTSELLER: "bg-amber-500", LIMITED: "bg-red-500",
-    BRIDAL: "bg-pink-500", DAILY: "bg-blue-500", Premium: "bg-indigo-500",
+    BRIDAL_RINGS: "bg-purple-500",  BRIDAL_SET: "bg-pink-500", DAILY: "bg-blue-500", Premium: "bg-indigo-500",
     Rare: "bg-rose-500", Exclusive: "bg-emerald-600", "Ultra Rare": "bg-orange-500",
     Collector: "bg-purple-500", "Museum Grade": "bg-violet-500",
   };

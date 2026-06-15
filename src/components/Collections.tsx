@@ -103,6 +103,67 @@ const goldProducts: Product[] = [
       "/assets/images/SJ b2 2.png",
     ],
   },
+  
+  
+  {
+    id: 42, name: "Gold Wishbone Pavé Ring", category: "Rings", price: "LKR 118,000",
+    description: "V-shaped chevron 22K gold ring delicately lined with embedded shimmering micro-crystals along its front ridge.",
+    image: "/assets/images/SJ r20 1.png",
+    images: [
+      "/assets/images/SJ r20 1.png",
+      "/assets/images/SJ r20 2.png",
+    ],
+  },
+  
+  {
+    id: 41, name: "Gold Emerald Marquise Leaf Studs", category: "Earrings", price: "LKR 60,000",
+    description: "Minimalist gold studs featuring twin marquise-cut emerald green cubic zirconia stones arranged in a leaf/v-shape.",
+    image: "/assets/images/SJ e41 1.png",
+    images: [
+      "/assets/images/SJ e41 1.png",
+       "/assets/images/SJ e41 2.png",
+
+    ],
+  },
+  {
+    id: 43, name: "Gold Nest Ring", category: "Rings", price: "LKR 110,000",
+    description: "V-shaped chevron 22K gold ring delicately lined with embedded shimmering micro-crystals along its front ridge.",
+    image: "/assets/images/SJ r21 1.png",
+    images: [
+      "/assets/images/SJ r21 1.png",
+      "/assets/images/SJ r21 2.png",
+    ],
+  },
+  
+  {
+    id: 44, name: "Gold Twirl Diamond Necklace", category: "Necklaces", price: "LKR 152,000",
+    description: "A brilliant diamond nestled in an elegant 22k gold twirl.",
+    image: "/assets/images/SJ n7 1.png",
+    images: [
+      "/assets/images/SJ n7 1.png",
+      "/assets/images/SJ n7 2.png",
+    ],
+  },
+{
+    id: 45, name: "Gold Black Round Pendant Necklace", category: "Necklaces", price: "LKR 145,000",
+    description: "Sleek 22k gold necklace featuring a minimalist circular black pendant.",
+    image: "/assets/images/SJ n8 1.png",
+    images: [
+      "/assets/images/SJ n8 1.png",
+      "/assets/images/SJ n8 2.png",
+    ],
+  },
+
+    {
+    id: 46, name: "Gold Star-Studded Spacer Bangle", category: "Bracelets", price: "LKR 210,000",
+    description: "A sleek 22k gold bangle studded with brilliant stones.",
+    image: "/assets/images/SJ b3 1.png",
+    images: [
+      "/assets/images/SJ b3 1.png",
+      "/assets/images/SJ b3 2.png",
+    ],
+  },
+  
   {
     id: 33, name: "Cuban Chain", category: "Men's Chains", price: "LKR 1,250,000",
     description: "22K Gold Men's Cuban Chain",
@@ -154,8 +215,8 @@ const goldProducts: Product[] = [
     ],
   },
      {
-    id: 38, name: "Snake Chain", category: "Men's Chains", price: "LKR 585,000",
-    description: "22K Gold Men's Snake Chain",
+    id: 38, name: "Rounded Snake Chain", category: "Men's Chains", price: "LKR 585,000",
+    description: "22K Gold Men's Rounded Snake Chain",
     image: "/assets/images/SJ mc6.png",
     images: [
       "/assets/images/SJ mc6.png",
@@ -365,12 +426,21 @@ const curatedProducts: Product[] = [
     ],
   },
   {
-    id: 28, name: "Bridal Ring", category: "Wedding Collection", price: "LKR 545,000",
+    id: 28, name: "SImple Bridal Ring Set", category: "Wedding Collection", price: "LKR 545,000",
     description: "An elegant 22k gold bridal ring set for the groom and bride",
-    image: "/assets/images/SJ w1 1.png", tag: "BRIDAL",
+    image: "/assets/images/SJ w1 1.png", tag: "BRIDAL_RINGS",
     images: [
       "/assets/images/SJ w1 1.png",
       "/assets/images/SJ w1 2.png",
+    ],
+  },
+   {
+    id: 47, name: "Eternal Grace Bridal Ring Set", category: "Wedding Collection", price: "LKR 545,000",
+    description: " 22k gold wedding rings set featuring a sleek, classic ring for groom and a brilliant diamond-studded eternity ring for bride",
+    image: "/assets/images/SJ w2 1.png", tag: "BRIDAL_RINGS",
+    images: [
+      "/assets/images/SJ w2 1.png",
+      "/assets/images/SJ w2 2.png",
     ],
   },
   {
@@ -399,12 +469,25 @@ const curatedProducts: Product[] = [
       "/assets/images/SJ r12.png",
     ],
   },
+    
   {
-    id: 32, name: "Gold Aura Circle Necklace", category: "Wedding Collection", price:  "LKR 165,000",
-    description:  "22K gold necklace with an Aura circular pendant",
-    image: "/assets/images/SJ n5 1.png", tag: "BRIDAL",
+    id: 32, name: "Gold Aura Bridal Set", category: "Wedding Collection", price:  "LKR 1,050,000",
+    description:  "22k gold bridal set featuring a sleek contemporary collar and shimmering pavé teardrop accents.",
+    image: "/assets/images/SJ w3 1.png", tag: "BRIDAL_SET",
     images: [
-      "/assets/images/SJ n5 1.png",
+      "/assets/images/SJ w3 1.png",
+      "/assets/images/SJ w3 2.png",
+      
+    ],
+  },
+
+  {
+    id: 48, name: "Gold Harmony Choker Bridal Set", category: "Wedding Collection", price:  "LKR 1,275,000",
+    description:  "Geometric 22k gold circles and squares meet in perfect harmony.",
+    image: "/assets/images/SJ w4 1.png", tag: "BRIDAL_SET",
+    images: [
+      "/assets/images/SJ w4 1.png",
+      "/assets/images/SJ w4 2.png",      
     ],
   },
 ];
@@ -431,7 +514,7 @@ const getSubcategories = (tab: CollectionTab): string[] => {
 
 const tagColors: Record<string, string> = {
   NEW: "bg-emerald-500", BESTSELLER: "bg-amber-500", LIMITED: "bg-red-500",
-  BRIDAL: "bg-pink-500", DAILY: "bg-blue-500", Premium: "bg-indigo-500",
+  BRIDAL_RINGS: "bg-purple-500",  BRIDAL_SET: "bg-pink-500",  DAILY: "bg-blue-500", Premium: "bg-indigo-500",
   Rare: "bg-rose-500", Exclusive: "bg-emerald-600", "Ultra Rare": "bg-orange-500",
   Collector: "bg-purple-500", "Museum Grade": "bg-violet-500",
 };
