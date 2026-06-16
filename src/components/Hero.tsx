@@ -14,15 +14,19 @@ export function Hero() {
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image */}
-      <div className="absolute inset-0">
-        <img
-          src="/assets/images/5.png"
-          alt="Luxury jewelry background"
-          className="w-full h-full object-contain md:object-cover"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70" />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-transparent to-black/30" />
-      </div>
+     <div className="absolute inset-0 bg-black flex items-center justify-center">
+  {/* Background Image */}
+  <img
+    src="/assets/images/5.png"
+    alt="Luxury jewelry background"
+    /* Mobile වලදී width එක 100% (w-full) වෙනවා, aspect ratio එක රැකගෙන උස auto හැදෙනවා (h-auto). Desktop වලදී විතරක් object-cover වෙනවා. */
+    className="w-full h-auto object-contain md:w-full md:h-full md:object-cover"
+  />
+  
+  {/* Overlays - Gradient එක image එක උඩට විතරක් වැටෙන්න parent එක absolute නිසා මේවා වෙනස් කරන්න ඕන නෑ */}
+  <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70" />
+  <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-transparent to-black/30" />
+</div>
 
       {/* Animated decorative elements */}
       <div className="absolute top-20 left-10 w-72 h-72 bg-gold-400/10 rounded-full blur-[100px] animate-float-slow" />
