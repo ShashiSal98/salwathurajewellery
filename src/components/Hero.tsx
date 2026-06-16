@@ -2,9 +2,11 @@ import { ChevronDown, Sparkles } from "lucide-react";
 import { useTheme } from "../context/ThemeContext";
 
 const heroImages = [
-  "/assets/images/SJ e1 1.png",
-   "/assets/images/SJ 1.png",
- "/assets/images/SJS r1 1.png",
+  "/assets/images/10.jpg",
+  "/assets/images/14.jpg",
+  "/assets/images/17.jpg",
+  "/assets/images/16.jpg",
+
 ];
 
 export function Hero() {
@@ -18,7 +20,7 @@ export function Hero() {
         <img
           src="/assets/images/5.png"
           alt="Luxury jewelry background"
-          className="w-full h-full object-cover"
+          className="w-full h-full object-contain"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70" />
         <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-transparent to-black/30" />
@@ -72,8 +74,8 @@ export function Hero() {
           className="font-[--font-display] text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold text-white mb-6 animate-fade-in-up leading-[0.95] tracking-wider"
           style={{ animationDelay: "0.6s", opacity: 0 }}
         >
-          
-                    <span className="animate-shimmer font-cormorant italic font-light text-[0.65em] tracking-[0.15em]">Salwathura</span>
+
+          <span className="animate-shimmer font-cormorant italic font-light text-[0.65em] tracking-[0.15em]">Salwathura</span>
 
           <br />
           <span className="animate-shimmer font-cormorant italic font-light text-[0.65em] tracking-[0.15em]">Jewellery</span>
