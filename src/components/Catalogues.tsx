@@ -10,6 +10,8 @@ const catalogues = [
     icon: FileText,
     link: "https://drive.google.com/file/d/1FJHXtCl1IVsHSep11GaobQEGrwX_EzFT/view?usp=drive_link",
     color: "from-yellow-400 to-gold-400",
+    borderColor: "border-yellow-400/20",
+    hoverBorder: "hover:border-yellow-400/40",
   },
   {
     id: 2,
@@ -17,7 +19,9 @@ const catalogues = [
     description: "Comprehensive guide to precious and semi-precious gemstones. Learn about different gemstones, their characteristics, origins, and quality parameters.",
     icon: Gem,
     link: "https://drive.google.com/file/d/16QV_NCQIk1-rUmNvru2sTFxc03uxrVvd/view?usp=drive_link",
-    color: "from-yellow-400 to-gold-400",
+     color: "from-yellow-400 to-gold-400",
+    borderColor: "border-yellow-400/20",
+    hoverBorder: "hover:border-yellow-400/40",
   },
 ];
 
