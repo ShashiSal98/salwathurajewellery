@@ -7,6 +7,7 @@ import { About } from "./components/About";
 import { Services } from "./components/Services";
 import { Gallery } from "./components/Gallery";
 import { Testimonials } from "./components/Testimonials";
+import { Catalogues } from "./components/Catalogues";
 import { Contact } from "./components/Contact";
 import { Footer } from "./components/Footer";
 import { SocialFloatingButtons } from "./components/SocialFloatingButtons";
@@ -28,6 +29,7 @@ function AppContent() {
       <Services />
       <Gallery />
       <Testimonials />
+      <Catalogues />
       <Contact />
       <Footer />
       <SocialFloatingButtons />

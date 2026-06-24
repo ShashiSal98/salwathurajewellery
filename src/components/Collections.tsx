@@ -747,10 +747,10 @@ export function Collections() {
         {/* CTA */}
         <div className="text-center mt-16">
           <a
-            href="#contact"
+            href="#catalogues"
             className={`inline-flex items-center gap-2 px-10 py-4 border-2 border-gold-400 font-montserrat text-sm tracking-widest uppercase font-semibold rounded-full transition-all duration-300 group hover:gold-gradient hover:text-dark-brown hover:border-transparent hover:shadow-lg hover:shadow-gold-400/20 hover:scale-105 ${isDark ? "text-gold-400" : "text-gold-600"}`}
           >
-            Visit Store for More
+            Visit for More
             <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </a>
         </div>

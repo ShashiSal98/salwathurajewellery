@@ -71,8 +71,9 @@ const navItems: NavItem[] = [
       { name: "Everyday Essentials", icon: <Sparkles className="w-4 h-4 text-sky-400" />, tab: "curated", subcategory: "Everyday Essentials" },
     ],
   },
+  { name: "Catalogues", href: "#catalogues" },
   { name: "About", href: "#about" },
-  { name: "Contact", href: "#contact" },
+  // { name: "Contact", href: "#contact" },
 ];
 
 const gemItems: SubItem[] = [
