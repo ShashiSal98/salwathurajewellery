@@ -113,7 +113,7 @@ export function Hero() {
             href="#contact"
             className="inline-flex items-center gap-2 px-10 py-4 border border-white/30 text-white font-montserrat text-sm tracking-widest uppercase font-medium rounded-full hover:bg-white/10 hover:border-white/50 transition-all duration-300 backdrop-blur-sm"
           >
-            Visit Our Store
+            Visit Us
           </a>
         </div>
       </div>

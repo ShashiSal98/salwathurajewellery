@@ -5,7 +5,7 @@ import { useTheme } from "../context/ThemeContext";
 import { useInView } from "../hooks/useInView";
 
 const contactInfo = [
-  { icon: MapPin, title: "Visit Our Store", lines: ["Salwathura Jewellery", "Sri Lanka"] },
+  { icon: MapPin, title: "Visit Us", lines: ["Salwathura Jewellery", "Sri Lanka"] },
   { icon: Phone, title: "Call Us", lines: ["+94 71 628 6275"] },
   { icon: Clock, title: "Working Hours", lines: ["Monday - Saturday: 9.00AM - 7.00PM", "Sunday: 10.00AM - 4.00PM"] },
   { icon: Mail, title: "Email Us", lines: ["salwathurajewellery5@gmail.com"] },
@@ -48,7 +48,7 @@ export function Contact() {
             Get in <span className="gold-text-gradient italic">Touch</span>
           </h2>
           <p className={`font-cormorant text-xl ${isDark ? "text-white/50" : "text-dark-brown/50"} max-w-2xl mx-auto italic`}>
-            We'd love to hear from you. Visit our store or reach out through any of our channels
+            We'd love to hear from you. Visit us or reach out through any of our channels
           </p>
         </div>
 

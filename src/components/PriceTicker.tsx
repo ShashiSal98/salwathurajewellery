@@ -758,7 +758,7 @@ export function PriceTicker() {
               }`}>
                 <AlertTriangle className="w-3 h-3 flex-shrink-0" />
                 Prices are indicative and may vary based on market conditions, making charges, and design complexity.
-                Visit our store for the most accurate pricing. 1 Pawn = 8 Grams. Rates are updated every 5 minutes.
+                Visit us for the most accurate pricing. 1 Pawn = 8 Grams. Rates are updated every 5 minutes.
               </p>
             </div>
           </>
