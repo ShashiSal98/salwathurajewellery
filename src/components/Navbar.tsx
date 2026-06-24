@@ -403,7 +403,7 @@ export function Navbar() {
               className="hidden xl:inline-flex items-center gap-2 px-5 py-2 gold-gradient-animated text-dark-brown font-montserrat text-[11px] tracking-widest uppercase font-semibold rounded-full hover:shadow-lg hover:shadow-gold-400/30 hover:scale-105 transition-all duration-300 shrink-0"
             >
               <Sparkles className="w-3.5 h-3.5" />
-              Visit Store
+              Visit Us
             </a>
 
             {/* Mobile toggle */}
@@ -434,7 +434,7 @@ export function Navbar() {
               <div className={`mt-3 pt-3 border-t ${isDark ? "border-gold-400/10" : "border-gold-200/30"}`}>
                 <a href="#contact" onClick={() => setIsOpen(false)} className="flex items-center justify-center gap-2 py-3 gold-gradient rounded-xl text-dark-brown font-montserrat text-xs tracking-widest uppercase font-semibold">
                   <Sparkles className="w-3.5 h-3.5" />
-                  Visit Store
+                  Visit Us
                 </a>
               </div>
             </div>
