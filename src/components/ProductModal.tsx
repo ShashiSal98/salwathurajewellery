@@ -5,6 +5,7 @@ import {
   Award, MessageCircle, ZoomIn, Check, Sparkles, Camera
 } from "lucide-react";
 import { useTheme } from "../context/ThemeContext";
+import { WHATSAPP_BASE_URL } from "../utils/whatsapp";
 
 export interface Product {
   id: number;
@@ -332,7 +333,7 @@ export function ProductModal({ product, isOpen, onClose, onNext, onPrev, allProd
               {/* CTA Buttons */}
               <div className="flex flex-col sm:flex-row gap-3 mb-8">
                 <a
-                  href={`https://wa.me/94716286275?text=Hi! I'm interested in ${product.name} (${product.price}). Can you provide more details?`}
+                  href={`${WHATSAPP_BASE_URL}?text=Hi! I'm interested in ${product.name} (${product.price}). Can you provide more details?`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex-1 gold-gradient-animated text-dark-brown font-montserrat text-sm font-semibold tracking-wider uppercase px-6 py-4 rounded-xl flex items-center justify-center gap-2 hover:shadow-lg hover:shadow-gold-400/30 transition-all duration-300 hover:scale-[1.02]"
