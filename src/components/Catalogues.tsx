@@ -8,7 +8,7 @@ const catalogues = [
     title: "Jewellery Catalogue",
     description: "Complete collection of our exquisite gold and silver jewellery designs. Browse through our latest designs, collections, and premium pieces.",
     icon: FileText,
-    link: "https://drive.google.com/file/d/1FJHXtCl1IVsHSep11GaobQEGrwX_EzFT/view?usp=drive_link",
+    link: "https://drive.google.com/file/d/13VtiyTEFZzhJAlFuk0gC2oNqh2qKBceK/view?usp=drive_link*1",
     color: "from-yellow-400 to-gold-400",
     borderColor: "border-yellow-400/20",
     hoverBorder: "hover:border-yellow-400/40",

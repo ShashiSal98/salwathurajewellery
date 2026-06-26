@@ -115,6 +115,9 @@ export function Footer() {
                 STech Solution
               </a>
             </p>
+            <p className="font-montserrat text-xs text-white/20 mt-1">
+              Location: <a href="https://maps.app.goo.gl/s87Mj41W3vRzuWLN6" target="_blank" rel="noopener noreferrer" className="hover:text-white/40 transition-colors">Visit on Google Maps</a>
+            </p>
           </div>
         </div>
       </div>

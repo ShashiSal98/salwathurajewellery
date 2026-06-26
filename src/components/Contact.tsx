@@ -5,10 +5,10 @@ import { useTheme } from "../context/ThemeContext";
 import { useInView } from "../hooks/useInView";
 
 const contactInfo = [
-  { icon: MapPin, title: "Visit Us", lines: ["Salwathura Jewellery", "Sri Lanka"] },
-  { icon: Phone, title: "Call Us", lines: ["+94 71 628 6275"] },
+  { icon: MapPin, title: "Visit Us", lines: ["Salwathura Jewellery", "Sri Lanka"], href: "https://maps.app.goo.gl/s87Mj41W3vRzuWLN6" },
+  { icon: Phone, title: "Call Us", lines: ["+94 77 0088 421"], href: "tel:+94770088421" },
   { icon: Clock, title: "Working Hours", lines: ["Monday - Saturday: 9.00AM - 7.00PM", "Sunday: 10.00AM - 4.00PM"] },
-  { icon: Mail, title: "Email Us", lines: ["salwathurajewellery5@gmail.com"] },
+  { icon: Mail, title: "Email Us", lines: ["salwathurajewellery5@gmail.com"], href: "mailto:salwathurajewellery5@gmail.com" },
 ];
 
 const socialLinks = [
@@ -69,9 +69,23 @@ export function Contact() {
                     <info.icon className="w-5 h-5 text-dark-brown" />
                   </div>
                   <h3 className={`font-playfair text-sm font-semibold ${isDark ? "text-white" : "text-dark-brown"} mb-2`}>{info.title}</h3>
-                  {info.lines.map((line, i) => (
-                    <p key={i} className={`font-montserrat text-xs ${isDark ? "text-white/40" : "text-dark-brown/50"}`}>{line}</p>
-                  ))}
+                  {info.href ? (
+                    info.lines.map((line, i) => (
+                      <a
+                        key={i}
+                        href={info.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={`block font-montserrat text-xs ${isDark ? "text-white/40" : "text-dark-brown/50"} hover:text-gold-400`}
+                      >
+                        {line}
+                      </a>
+                    ))
+                  ) : (
+                    info.lines.map((line, i) => (
+                      <p key={i} className={`font-montserrat text-xs ${isDark ? "text-white/40" : "text-dark-brown/50"}`}>{line}</p>
+                    ))
+                  )}
                 </div>
               ))}
             </div>
